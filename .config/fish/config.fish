@@ -2,6 +2,10 @@ set fish_greeting
 
 set -g theme_short_path yes
 
+# VIM
+set -x EDITOR vim
+set -x LC_ALL en_US.UTF-8
+
 # N
 set -x N_PREFIX $HOME/.n
 set -x PATH $N_PREFIX/bin $PATH

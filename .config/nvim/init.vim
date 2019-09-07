@@ -1,38 +1,43 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin("~/.nvim/plugged")
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
-Plug 'SirVer/ultisnips'
-Plug '/usr/local/opt/fzf'
-Plug 'dense-analysis/ale'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'mhinz/vim-signify'
-Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug '/usr/local/opt/fzf'
+
+" Colors
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+
+" Autocompletion
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript' }
+Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 
 call plug#end()
 
-" Map space to leader
-let mapleader=","
+" Map comma to leader
+let mapleader = ","
 
 " Vim Signify
 let g:signify_vcs_list = ['git']
 
 " Vim Airline
-let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#disable_refresh = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
-set linespace=0
 
 " FZF
 nmap <C-p> :FZF<CR>
@@ -41,36 +46,15 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-" Ale
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'python': ['pylint'] }
-let g:ale_fixers = {
-  \ 'javascript': ['prettier', 'eslint'],
-  \ 'typescript': ['prettier'],
-  \ 'css': ['prettier'],
-  \ 'markdown': ['prettier'],
-  \ 'html': ['prettier'],
-  \ 'json': ['prettier'],
-  \ 'python': ['black'] }
-let g:ale_python_pylint_options = '--errors-only'
-let g:ale_linters_explicit = 1
-let g:ale_javascript_eslint_suppress_missing_config = 1
-nmap <leader>f :ALEFix<CR>
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-nmap <leader>g :YcmCompleter GoTo<CR>
+" Deoplete Jedi
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" NerdTree
+" NERDTree
 let g:NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore = ['\.git$', '\.DS_Store$', 'node_modules']
@@ -80,9 +64,8 @@ nmap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Colorscheme
-let g:gruvbox_italic = 1
-let g:gruvbox_bold = 1
-colorscheme gruvbox
+set termguicolors
+colorscheme onedark
 
 " General
 set cursorline
