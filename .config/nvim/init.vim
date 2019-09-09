@@ -10,18 +10,26 @@ Plug 'mhinz/vim-signify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Colors
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
+
+" Language specific
+" Plug 'plasticboy/vim-markdown'
+Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 
 " Autocompletion
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript' }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go' }
+
+" Linting
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -54,6 +62,16 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
+" ALE Linter
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+  \ 'go': ['gofmt'],
+  \ 'javascript': ['prettier'],
+  \ 'typescript': ['prettier'],
+  \ 'json': ['prettier'],
+  \ 'markdown': ['prettier'],
+  \ }
+
 " NERDTree
 let g:NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
@@ -74,12 +92,12 @@ set encoding=utf-8
 set list
 set listchars=extends:…,trail:␣,eol:¬,tab:»·
 set noeol
-set nofixendofline
 set number relativenumber
 set noswapfile
 set noeb vb t_vb=
 set timeoutlen=1000 ttimeoutlen=0
 set fileformat=unix
+set nofixendofline
 
 " Indentation
 set tabstop=2
@@ -100,6 +118,11 @@ au BufNewFile,BufRead *.php
     \ setlocal shiftwidth=4
 au BufNewFile,BufRead *.md
     \ setlocal wrap
+au BufNewFile,BufRead *.go
+    \ setlocal noexpandtab |
+    \ setlocal tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4
 
 " Set clipboard
 set clipboard=unnamed

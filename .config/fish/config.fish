@@ -6,6 +6,10 @@ set -g theme_short_path yes
 set -x EDITOR vim
 set -x LC_ALL en_US.UTF-8
 
+# Golang
+set -x GOPATH $HOME/projects/golang
+set -x PATH $GOPATH/bin $PATH
+
 # N
 set -x N_PREFIX $HOME/.n
 set -x PATH $N_PREFIX/bin $PATH
