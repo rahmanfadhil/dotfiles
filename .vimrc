@@ -14,8 +14,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'mhinz/vim-signify'
 Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
+Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
@@ -26,7 +25,7 @@ let mapleader=","
 let g:signify_vcs_list = ['git']
 
 " Vim Airline
-let g:airline_theme='gruvbox'
+" let g:airline_theme='gruvbox'
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#disable_refresh = 0
@@ -80,9 +79,9 @@ nmap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Colorscheme
-let g:gruvbox_italic = 1
-let g:gruvbox_bold = 1
-colorscheme gruvbox
+" let g:gruvbox_italic = 1
+" let g:gruvbox_bold = 1
+colorscheme jellybeans
 
 " General
 set cursorline
