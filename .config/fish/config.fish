@@ -16,10 +16,10 @@ set -x PATH $HOME/tools/flutter/bin $PATH
 
 # Android
 set -x ANDROID_HOME $HOME/Library/Android/sdk
-set -x PATH $ANDROID_HOME/emulator $PATH
 set -x PATH $ANDROID_HOME/tools $PATH
 set -x PATH $ANDROID_HOME/tools/bin $PATH
 set -x PATH $ANDROID_HOME/platform-tools $PATH
+set -x PATH $ANDROID_HOME/emulator $PATH
 
 # Rust
 set -x PATH $HOME/.cargo/bin $PATH

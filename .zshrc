@@ -8,7 +8,7 @@ export ZSH="/Users/rahmanfadhil/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cloud"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -67,7 +67,7 @@ ZSH_THEME="cloud"
 # ZSH_TMUX_AUTOSTART=true
 
 # Configure FZF installation dir
-export FZF_DEFAULT_COMMAND="fd -t f -H -E .git"
+export FZF_DEFAULT_COMMAND="rg --files"
 # export FZF_DEFAULT_OPTS="--preview=\"bat --color always {}\""
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_BASE=/usr/local/opt/fzf
@@ -77,7 +77,7 @@ export FZF_BASE=/usr/local/opt/fzf
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux fzf fasd)
+plugins=(git tmux fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # VIM
-export EDITOR=vim
+export EDITOR=nvim
 export LC_ALL=en_US.UTF-8
 
 # Python
@@ -123,12 +123,15 @@ export PATH=$N_PREFIX/bin:$PATH
 # Flutter
 export PATH="$PATH:$HOME/tools/flutter/bin"
 
-# Android
+# Android (React Native)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Composer
+export PATH=$PATH:$HOME/.composer/vendor/bin
 
 # BASE16_SHELL="$HOME/.config/base16-shell/"
 # [ -n "$PS1" ] && \
@@ -138,3 +141,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Editors
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH="$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rahmanfadhil/tools/gcloud/path.zsh.inc' ]; then . '/Users/rahmanfadhil/tools/gcloud/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rahmanfadhil/tools/gcloud/completion.zsh.inc' ]; then . '/Users/rahmanfadhil/tools/gcloud/completion.zsh.inc'; fi

@@ -16,15 +16,10 @@ Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --ts-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'nanotech/jellybeans.vim'
 Plug 'neomake/neomake'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
-
-" Neomake
-call neomake#configure#automake('nw', 750)
-let g:neomake_python_enabled_makers = ['pep8']
 
 " Map comma to leader
 let mapleader = ","
@@ -33,12 +28,12 @@ let mapleader = ","
 let g:signify_vcs_list = ['git']
 
 " Vim Airline
-" let g:airline_theme='onedark'
+let g:airline_theme='onedark'
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#disable_refresh = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 " FZF
 nmap <C-p> :FZF<CR>
@@ -50,47 +45,32 @@ let g:fzf_action = {
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_python_binary_path = 'python'
-" let g:ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
+
+" Neomake
+call neomake#configure#automake('nw', 750)
+let g:neomake_python_enabled_makers = ['autopep8']
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" Deoplete
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
-
-" Deoplete Jedi
+" Python config
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
-
-" ALE Linter
-" let g:ale_fix_on_save = 1
-" let g:ale_linters = {
-"   \ 'javascript': ['eslint'],
-"   \ 'go': ['golint'],
-"   \ }
-" let g:ale_fixers = {
-"   \ 'go': ['gofmt'],
-"   \ 'javascript': ['prettier'],
-"   \ 'typescript': ['prettier'],
-"   \ 'json': ['prettier'],
-"   \ 'markdown': ['prettier'],
-"   \ }
 
 " NERDTree
 let g:NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore = ['\.git$', '\.DS_Store$', 'node_modules']
-let g:NERDTreeWinPos = "right"
+" let g:NERDTreeWinPos = "right"
 nmap <C-n> :NERDTreeToggle<CR>
 " Close VIM if the only open editor if NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Colorscheme
 set termguicolors
-colorscheme jellybeans
+colorscheme onedark
 
 " General
 set cursorline
