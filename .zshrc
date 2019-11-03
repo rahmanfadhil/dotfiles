@@ -120,9 +120,6 @@ alias newenv="python3 -m venv"
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
 
-# Flutter
-export PATH="$PATH:$HOME/tools/flutter/bin"
-
 # Android (React Native)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -147,3 +144,5 @@ if [ -f '/Users/rahmanfadhil/tools/gcloud/path.zsh.inc' ]; then . '/Users/rahman
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/rahmanfadhil/tools/gcloud/completion.zsh.inc' ]; then . '/Users/rahmanfadhil/tools/gcloud/completion.zsh.inc'; fi
+
+export PATH=/usr/local/Cellar/gettext/0.20.1/bin:$PATH
