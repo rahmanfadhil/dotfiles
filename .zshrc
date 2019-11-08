@@ -127,6 +127,9 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# Flutter
+export PATH=$PATH:$HOME/tools/flutter/bin
+
 # Composer
 export PATH=$PATH:$HOME/.composer/vendor/bin
 
