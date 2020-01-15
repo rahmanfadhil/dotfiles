@@ -1,9 +1,4 @@
-set fish_greeting
-
-set -g theme_short_path yes
-
-# Web drivers for selenium
-set -x PATH $HOME/WebDrivers $PATH
+starship init fish | source
 
 # Python
 alias python "python3"
@@ -50,5 +45,8 @@ set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 # Ruby (rbnenv)
 status --is-interactive; and source (rbenv init -|psub)
 
-# LaTex
-set -x PATH "/usr/local/texlive/2019basic/bin/x86_64-darwin" $PATH
+# Editor
+set -x EDITOR "nvim"
+
+# GitHub's Hub
+alias git="hub"

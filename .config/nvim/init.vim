@@ -10,14 +10,12 @@ Plug 'mhinz/vim-signify'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --ts-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'vim-airline/vim-airline'
-Plug 'neomake/neomake'
-Plug 'sbdchd/neoformat'
 
 call plug#end()
 
@@ -46,24 +44,15 @@ let g:fzf_action = {
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-" Neomake
-call neomake#configure#automake('nw', 750)
-let g:neomake_python_enabled_makers = ['autopep8']
-
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" Python config
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 " NERDTree
 let g:NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore = ['\.git$', '\.DS_Store$', 'node_modules']
-" let g:NERDTreeWinPos = "right"
 nmap <C-n> :NERDTreeToggle<CR>
 " Close VIM if the only open editor if NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
